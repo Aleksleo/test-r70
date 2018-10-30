@@ -1,10 +1,9 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+require (__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'test-r70',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -42,17 +41,20 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-        /*
+        'db' => $db_params,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'groups/index',
+                'groups/<id:\d+>' => 'groups/view',
+                'students' => 'students/index',
+                'students/<id:\d+>' => 'students/view',
             ],
         ],
-        */
     ],
-    'params' => $params,
+    'params' => $app_params,
+    'layout' => 'main',
 ];
 
 if (YII_ENV_DEV) {
