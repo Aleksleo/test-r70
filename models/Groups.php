@@ -20,12 +20,26 @@ use yii\db\ActiveRecord;
 class Groups extends ActiveRecord
 {
 
+    public function attributes()
+    {
+        return [
+            'id',
+            'title'
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'title' => 'Номер группы'
+        ];
+    }
+
     public function rules()
     {
         return [
             ['title', 'required', 'message' => 'Номер группы не может быть пустым'],
-            ['title', 'unique'],
-            ['title', 'length', 'max' => 10],
+            ['title', 'unique', 'message' => "Номер группы \"{value}\" уже существует"],
         ];
     }
 

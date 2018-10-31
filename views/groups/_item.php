@@ -10,5 +10,7 @@ use yii\helpers\Html;
 
 echo '<tr>';
     echo '<td>' . Html::encode("{$data->title}") . '</td>';
-    echo '<td>' . Html::button() . '</td>';
+    echo '<td>';
+    echo Html::a('Ред.', ['/groups/view/' . $data->id]) . ' ' . Html::a('Удал.', ['/groups/delete/' . $data->id]);
+    echo '</td>';
 echo '</tr>';

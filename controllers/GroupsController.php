@@ -26,7 +26,7 @@ class GroupsController extends Controller
         $query = Groups::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 10,
             'totalCount' => $query->count()
         ]);
 
@@ -49,9 +49,13 @@ class GroupsController extends Controller
             throw new NotFoundHttpException;
         }
 
-        return $this->render('view', [
-            'model' => $model
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['groups/index']);
+        } else {
+            return $this->render('view', [
+                'model' => $model
+            ]);
+        }
     }
 
     public function actionCreate()
@@ -59,11 +63,24 @@ class GroupsController extends Controller
         $model = new Groups;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['groups/index']);
         } else {
-            return $this->render('create', [
+            return $this->render('view', [
                 'model' => $model
             ]);
+        }
+    }
+
+    public function actionDelete($id)
+    {
+        $model = Groups::findOne($id);
+
+        if($model === null) {
+            throw new NotFoundHttpException;
+        }
+
+        if ($model->delete()) {
+            return $this->redirect(['groups/index']);
         }
     }
 

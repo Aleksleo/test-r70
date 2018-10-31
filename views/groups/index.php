@@ -11,6 +11,7 @@
  * @var $this \app\controllers\GroupsController
  */
 
+use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
 $this->title = 'Группы';
@@ -20,10 +21,14 @@ $this->title = 'Группы';
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2 class="">Группы</h2>
-
-                <table class="table">
+            <div class="col-lg-10">
+                <h2><?= Html::encode($this->title) ?>
+                    <small> :: <?= Html::a('Студенты', ['/students']) ?></small>
+                </h2>
+                <div class="col-lg-1 col-lg-offset-10">
+                    <?= Html::a('Добавить группу', ['/groups/create'], ['class' => 'btn btn-primary']) ?>
+                </div>
+                <table class="table table-condensed">
                     <thead>
                         <tr>
                             <th scope="col" colspan="2">Группа</th>

@@ -47,12 +47,14 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'groups/index',
-                'groups/<id:\d+>' => 'groups/view',
+                'groups/view/<id:\d+>' => 'groups/view',
+                'groups/delete/<id:\d+>' => 'groups/delete',
                 'students' => 'students/index',
                 'students/<id:\d+>' => 'students/view',
             ],
         ],
     ],
+    'defaultRoute' => 'groups',
     'params' => $app_params,
     'layout' => 'main',
 ];
