@@ -32,7 +32,7 @@ class StudentsController extends Controller
         ]);
 
         $students = $query->joinWith('groups')
-            ->orderBy('tbl_groups.title')
+            ->orderBy('{{%groups}}.title')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
