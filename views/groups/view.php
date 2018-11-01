@@ -9,7 +9,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-($model->isNewRecord) ? $this->title = 'Создание группы' : $this->title = 'Изменение группы';
+($model->isNewRecord) ? $this->title = 'Добавление группы' : $this->title = 'Редактирование группы';
 ?>
 
 <div class="site-index">

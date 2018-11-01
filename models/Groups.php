@@ -14,6 +14,7 @@ use yii\db\ActiveRecord;
  * This is the model class for table "{{groups}}".
  *
  * The followings are the available columns in table '{{groups}}':
+ * @property int $id
  * @property string $title
  */
 
@@ -26,6 +27,11 @@ class Groups extends ActiveRecord
             'id',
             'title'
         ];
+    }
+
+    public function getStudents()
+    {
+        return $this->hasMany(Students::class, ['group_id' => 'id']);
     }
 
     public function attributeLabels()
