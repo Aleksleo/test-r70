@@ -22,6 +22,7 @@ use yii\bootstrap\ActiveForm;
                 <?= $form->field($model, 'title') ?>
                 <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
                 <?= Html::a('Отмена', ['/groups/index'], ['class' => 'btn btn-default']) ?>
+                <?php if(!$model->isNewRecord) { echo Html::a('Удалить', ['/groups/delete/' . $model->id], ['class' => 'btn btn-danger']);} ?>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>

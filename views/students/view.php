@@ -27,6 +27,7 @@ use \yii\helpers\ArrayHelper;
                     ->dropDownList(ArrayHelper::map($groups, 'id', 'title')) ?>
                 <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
                 <?= Html::a('Отмена', ['/students/index'], ['class' => 'btn btn-default']) ?>
+                <?php if(!$model->isNewRecord) { echo Html::a('Удалить', ['/students/delete/' . $model->id], ['class' => 'btn btn-danger']);} ?>
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
