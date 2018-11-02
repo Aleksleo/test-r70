@@ -43,7 +43,7 @@ class Groups extends ActiveRecord
 
     public function beforeDelete()
     {
-        Students::updateAll(['group_id' => 0], 'group_id = :id', [':id' => $this->id]);
+        Students::updateAll(['group_id' => ''], 'group_id = :id', [':id' => $this->id]);
 
         return parent::beforeDelete();
     }
