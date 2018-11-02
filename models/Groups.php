@@ -41,6 +41,17 @@ class Groups extends ActiveRecord
         ];
     }
 
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()){
+            return false;
+        }
+
+        Students::updateAll(['group_id' => 0], 'group_id = :id', [':id' => $this->id]);
+
+        return true;
+    }
+
     public function rules()
     {
         return [
